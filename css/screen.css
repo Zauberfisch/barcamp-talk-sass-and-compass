@@ -1,0 +1,210 @@
+/*
+  * Sass - Syntactically Awesome Stylesheet / Scss - Sassy CSS
+  * http://sass-lang.com/
+  *
+  * Sass is a Metalanguage for CSS
+  * - compiled into
+  *
+  * some other meta languages:
+  * - less (css) | http://lesscss.org/
+  * - coffee script (javascript) | http://coffeescript.org/
+  * - type script (javascript) | http://www.typescriptlang.org/
+  *
+  * sass
+  * - based on css (css3)
+  * - but yaml like syntax
+  * - key features
+  *     - nested rules
+  *     - variables
+  *     - mixins
+  *     - selector inheritance (extend a selector)
+  *     - good css errors
+  *
+  * scss
+  * - newer version of sass
+  * - same features
+  * - css like syntax
+  *
+  * Compass
+  *
+  * http://compass-style.org
+  *
+  * - sass framework
+  * - provides many methods / mixins
+  * - includes sass "compiler"
+  */
+* {
+  margin: 0;
+  padding: 0; }
+
+.spacer {
+  clear: both;
+  height: 30px; }
+
+html {
+  padding: 30px;
+  /* relative image url */
+  background: url('../images/background.png?1362531745'); }
+
+.button {
+  display: block;
+  color: #FFF;
+  text-align: center;
+  width: 100px;
+  margin: 20px;
+  line-height: 20px;
+  text-decoration: none;
+  background: #3b679e;
+  border: 1px solid #1f3754;
+  font-weight: bold;
+  float: left;
+  /*********************************************
+    * nested css & variables
+    */
+  /*********************************************
+    * css3 mixins
+    */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition: color 2s ease, background 2s ease, padding 2s ease;
+  -moz-transition: color 2s ease, background 2s ease, padding 2s ease;
+  -o-transition: color 2s ease, background 2s ease, padding 2s ease;
+  transition: color 2s ease, background 2s ease, padding 2s ease; }
+.button.good {
+  background: green;
+  border-color: #001a00; }
+.button.bad {
+  background: red;
+  border-color: #990000; }
+.button:hover {
+  color: #000;
+  background: #add8e6;
+  padding: 0 30px; }
+.button.fancy {
+  /*********************************************
+    * gradients
+    * http://www.colorzilla.com/gradient-editor/
+    */
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzNiNjc5ZSIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjMmI4OGQ5Ii8+PHN0b3Agb2Zmc2V0PSI1MSUiIHN0b3AtY29sb3I9IiMyMDdjY2EiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3ZGI5ZTgiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #3b679e), color-stop(50%, #2b88d9), color-stop(51%, #207cca), color-stop(100%, #7db9e8));
+  background-image: -webkit-linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+  background-image: -moz-linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+  background-image: -o-linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%);
+  background-image: linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%); }
+
+/*********************************************
+  * spriting
+  */
+.icon-sprite, .icon-application, .icon-excel, .icon-feed, .icon-pdf, .icon-word, .icon-zip {
+  background: url('../images/icon-s24338fe345.png') no-repeat; }
+
+.icon-application {
+  background-position: 0 -62px; }
+
+.icon-excel {
+  background-position: 0 0; }
+
+.icon-feed {
+  background-position: 0 -32px; }
+
+.icon-pdf {
+  background-position: 0 -46px; }
+
+.icon-word {
+  background-position: 0 -16px; }
+
+.icon-zip {
+  background-position: 0 -78px; }
+
+.button span {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  width: 16px;
+  height: 16px; }
+
+/*********************************************
+  * sprite map
+  */
+.smiley {
+  width: 15px;
+  height: 16px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline; }
+.smiley.happy {
+  background: url('../images/smilies-s351db9f86e.png') 0 -15px; }
+.smiley.unhappy {
+  background: url('../images/smilies-s351db9f86e.png') 0 -60px; }
+.smiley.angry {
+  background: url('../images/smilies-s351db9f86e.png') 0 -120px; }
+.smiley.wink {
+  background: url('../images/smilies-s351db9f86e.png') 0 0; }
+
+/*********************************************
+  * math
+  */
+.box {
+  width: 100px;
+  height: 50px;
+  border: 1px solid black;
+  margin: 10px;
+  float: left; }
+.box.size-2 {
+  width: 200px; }
+.box.size-3 {
+  width: 400px; }
+
+/*********************************************
+  * for loop & if
+  */
+.color-1 {
+  background-color: #e6e6e6; }
+
+.color-2 {
+  background-color: #cccccc; }
+
+.color-3 {
+  background-color: #b3b3b3; }
+
+.color-4 {
+  background-color: #999999; }
+
+.color-5 {
+  background-color: pink; }
+
+/*********************************************
+  * mixins
+  */
+.box-outer {
+  background: #3b679e;
+  width: 100px;
+  overflow: hidden;
+  padding: 25px; }
+.box-outer .box-inner {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#80000000', GradientType=0 );
+  background: rgba(0, 0, 0, 0.5);
+  height: 50px; }
+
+/*********************************************
+  * more infos and resources at
+  * - http://sass-lang.com/
+  * - http://compass-style.org/
+  *
+  * small talk on sass/scss & compass
+  * by @Zauberfisch
+  *
+  * http://github.com/zauberfisch
+  * http://twitter.com/zauberfisch
+  * irc://irc.freenode.net/Zauberfisch
+  */

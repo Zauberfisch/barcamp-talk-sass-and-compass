@@ -1,0 +1,220 @@
+/*
+  * Sass - Syntactically Awesome Stylesheet / Scss - Sassy CSS
+  * http://sass-lang.com/
+  *
+  * Sass is a Metalanguage for CSS
+  * - compiled into
+  *
+  * some other meta languages:
+  * - less (css) | http://lesscss.org/
+  * - coffee script (javascript) | http://coffeescript.org/
+  * - type script (javascript) | http://www.typescriptlang.org/
+  *
+  * sass
+  * - based on css (css3)
+  * - but yaml like syntax
+  * - key features
+  *     - nested rules
+  *     - variables
+  *     - mixins
+  *     - selector inheritance (extend a selector)
+  *     - good css errors
+  *
+  * scss
+  * - newer version of sass
+  * - same features
+  * - css like syntax
+  *
+  * Compass
+  *
+  * http://compass-style.org
+  *
+  * - sass framework
+  * - provides many methods / mixins
+  * - includes sass "compiler"
+  *
+  *
+  * installing compass (http://compass-style.org/install/)
+  * - install ruby
+  * - $ gem install compass
+  *
+  * initializing compass
+  *   $ compass create <myproject>
+  *
+  * running compass
+  *   $ cd myproject
+  *   $ compass watch .
+  */
+
+// import compass framework
+@import "compass";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.spacer {
+	clear: both;
+	height: 30px;
+}
+
+html {
+	padding: 30px;
+	/* relative image url */
+	background: image-url('background.png');
+}
+
+.button {
+	display: block;
+	color: #FFF;
+	text-align: center;
+	width: 100px;
+	margin: 20px;
+	line-height: 20px;
+	text-decoration: none;
+	background: #3b679e;
+	border: 1px solid darken(#3b679e, 20%);
+	font-weight: bold;
+	float: left;
+
+	/*********************************************
+	  * nested css & variables
+	  */
+	&.good {
+		$color: #008000;
+		background: $color;
+		border-color: darken($color, 20%);
+	}
+	&.bad {
+		$color: #FF0000;
+		background: $color;
+		border-color: darken($color, 20%);
+	}
+
+	/*********************************************
+	  * css3 mixins
+	  */
+	@include border-radius(5px);
+	@include transition(color 2s ease, background 2s ease, padding 2s ease);
+	&:hover {
+		color: #000;
+		background: #add8e6;
+		padding: 0 30px;
+	}
+
+	&.fancy {
+		/*********************************************
+		  * gradients
+		  * http://www.colorzilla.com/gradient-editor/
+		  */
+		$experimental-support-for-svg: true;
+		@include background-image(linear-gradient(top, #3b679e 0%, #2b88d9 50%, #207cca 51%, #7db9e8 100%));
+	}
+}
+
+/*********************************************
+  * spriting
+  */
+@import "icon/*.png";
+@include all-icon-sprites;
+
+.button {
+	span {
+		@include inline-block;
+		width: 16px;
+		height: 16px;
+	}
+}
+
+/*********************************************
+  * sprite map
+  */
+$smilies: sprite-map('smilies/*.png');
+.smiley {
+	width: 15px;
+	height: 16px;
+	@include inline-block;
+
+	&.happy {
+		background: sprite($smilies, 'smile');
+	}
+	&.unhappy {
+		background: sprite($smilies, 'sad');
+	}
+	&.angry {
+		background: sprite($smilies, 'mad');
+	}
+	&.wink {
+		background: sprite($smilies, 'wink');
+	}
+}
+
+/*********************************************
+  * math
+  */
+$base-width: 100px;
+
+.box {
+	width: $base-width;
+	height: 50px;
+	border: 1px solid #000;
+	margin: 10px;
+	float: left;
+
+	&.size-2 {
+		width: $base-width * 2;
+	}
+	&.size-3 {
+		width: $base-width + 300px;
+	}
+}
+
+/*********************************************
+  * for loop & if
+  */
+$base-color: #FFF;
+@for $i from 1 through 5 {
+	.color-#{$i} {
+		@if ($i == 5) {
+			background-color: pink;
+		} @else {
+			background-color: darken($base-color, $i * 10);
+		}
+	}
+}
+
+/*********************************************
+  * mixins
+  */
+@mixin rgba-background($color, $opacity) {
+	$rgba: rgba($color, $opacity);
+	$IEcolor: ie_hex_str($rgba);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$IEcolor}', endColorstr='#{$IEcolor}', GradientType=0 );
+	background: $rgba;
+}
+
+.box-outer {
+	background: #3b679e;
+	width: 100px;
+	overflow: hidden;
+	padding: 25px;
+
+	.box-inner {
+		@include rgba-background(#000, 0.5);
+		height: 50px;
+	}
+}
+
+/*********************************************
+  * more infos and resources at
+  * - http://sass-lang.com/
+  * - http://compass-style.org/
+  *
+  * small talk on sass/scss & compass
+  * by @Zauberfisch
+  *
+  * http://github.com/zauberfisch
+  * http://twitter.com/zauberfisch
+  * irc://irc.freenode.net/Zauberfisch
+  */
